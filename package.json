@@ -1,7 +1,21 @@
 {
   "name": "shoplisync",
-  "main": "expo-router/entry",
   "version": "1.0.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "android": "expo start --android",
+    "dependency:update:check": "expo install --check",
+    "dependency:update:fix": "expo install --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "ios": "expo start --ios",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "prepare": "husky",
+    "start": "expo start",
+    "web": "expo start --web"
+  },
   "dependencies": {
     "@expo/ui": "~57.0.8",
     "expo": "~57.0.9",
@@ -29,15 +43,10 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "husky": "^9.1.7",
+    "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
+    "oxlint-config-universe": "^0.0.3",
     "typescript": "~6.0.3"
-  },
-  "scripts": {
-    "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "lint": "expo lint"
-  },
-  "private": true
+  }
 }

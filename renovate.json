@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "schedule:daily"],
+  "timezone": "America/New_York",
+  "rangeStrategy": "pin",
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days",
+      "minimumReleaseAgeBehaviour": "timestamp-required"
+    },
+    {
+      "enabled": false,
+      "matchPackageNames": [
+        "/^@expo/",
+        "/^expo/",
+        "/^@react/",
+        "/^react/",
+        "/^@types/react/",
+        "/^typescript/"
+      ]
+    },
+    {
+      "matchPackageNames": ["oxlint", "oxfmt", "/^oxlint/", "/^@oxlint/"],
+      "groupName": "oxc-tools"
+    }
+  ]
+}
