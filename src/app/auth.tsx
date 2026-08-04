@@ -1,11 +1,10 @@
-import { UserButton } from "@clerk/expo/native";
-import { StyleSheet, Text, View } from "react-native";
+import { AuthView } from "@clerk/expo/native";
+import { StyleSheet, View } from "react-native";
 
-export default function HomeScreen() {
+export default function AuthScreen() {
   return (
     <View style={styles.container}>
-      <Text>Home screen</Text>
-      <UserButton />
+      <AuthView />
     </View>
   );
 }
