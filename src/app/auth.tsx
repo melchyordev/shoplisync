@@ -1,18 +1,17 @@
+import { useSession } from "@clerk/expo";
 import { AuthView } from "@clerk/expo/native";
-import { StyleSheet, View } from "react-native";
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 
 export default function AuthScreen() {
-  return (
-    <View style={styles.container}>
-      <AuthView />
-    </View>
-  );
-}
+  const router = useRouter();
+  const { session } = useSession();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+  useEffect(() => {
+    if (session?.status === "active") {
+      router.replace("/");
+    }
+  }, [router, session?.status]);
+
+  return <AuthView isDismissible={false} />;
+}

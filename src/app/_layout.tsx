@@ -1,8 +1,11 @@
 import { ClerkProvider, useAuth } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
-import { SplashScreen, Stack } from "expo-router";
+import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 
-import { ThemeProvider } from "@/lib/themeContext";
+import { ThemeProvider, useTheme } from "@/lib/themeContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,19 +26,34 @@ export default function RootLayout() {
 }
 
 const RootNavigator = () => {
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoaded, isSignedIn } = useAuth({
+    treatPendingAsSignedOut: false,
+  });
+  const { colors } = useTheme();
 
-  if (isLoaded) {
-    SplashScreen.hide();
+  useEffect(() => {
+    if (isLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [isLoaded]);
+
+  if (!isLoaded) {
+    return null;
   }
+
   return (
-    <Stack>
-      <Stack.Protected guard={!!isSignedIn}>
-        <Stack.Screen name="auth" />
-      </Stack.Protected>
-      <Stack.Protected guard={!isSignedIn}>
-        <Stack.Screen name="index" />
-      </Stack.Protected>
-    </Stack>
+    <>
+      <StatusBar style="auto" animated />
+      <Stack
+        screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}
+      >
+        <Stack.Protected guard={!!isSignedIn}>
+          <Stack.Screen name="(main)" />
+        </Stack.Protected>
+        <Stack.Protected guard={!isSignedIn}>
+          <Stack.Screen name="auth" />
+        </Stack.Protected>
+      </Stack>
+    </>
   );
 };
