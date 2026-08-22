@@ -20,10 +20,6 @@
       ]
     },
     {
-      "matchPackageNames": ["oxlint", "oxfmt", "/^oxlint/", "/^@oxlint/"],
-      "groupName": "oxc-tools"
-    },
-    {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "groupName": "non-major dependencies"
     }
