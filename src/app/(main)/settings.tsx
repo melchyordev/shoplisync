@@ -1,6 +1,5 @@
 import { UserButton } from "@clerk/expo/native";
 import { Stack } from "expo-router";
-import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import ButtonGroup from "@/components/buttonGroup";
@@ -12,18 +11,11 @@ const OPTIONS: ThemeSettingOptions[] = ["system", "light", "dark"];
 export default function SettingsScreen() {
   const { themeSetting, changeThemeSetting } = useTheme();
 
-  const [selectedThemeIndex, setSelectedThemeIndex] = useState(0);
-
-  useEffect(() => {
-    setSelectedThemeIndex(OPTIONS.indexOf(themeSetting));
-  }, [themeSetting]);
-
   const handleThemeSwitch = (index: number) => {
     const nextTheme = OPTIONS[index];
     if (nextTheme === undefined) {
       return;
     }
-    setSelectedThemeIndex(index);
     changeThemeSetting(nextTheme);
   };
 
@@ -41,7 +33,7 @@ export default function SettingsScreen() {
         <UserButton />
         <ButtonGroup
           options={OPTIONS}
-          selectedIndex={selectedThemeIndex}
+          selectedIndex={Math.max(OPTIONS.indexOf(themeSetting), 0)}
           onChange={handleThemeSwitch}
         />
       </View>
