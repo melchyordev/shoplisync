@@ -7,9 +7,3 @@
 - Clerk for auth
 - Tinybase for real-time syncing, offline support, and persistence
 - Cloudflare Durable Objects for server and db storage
-
-### To Do List
-
-- implement the color theme and theme switcher
-- install wrangler cli
-- add support for web

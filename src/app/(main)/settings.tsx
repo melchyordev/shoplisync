@@ -1,7 +1,8 @@
 import { UserButton } from "@clerk/expo/native";
 import { Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
+import AppText from "@/components/appText";
 import ButtonGroup from "@/components/buttonGroup";
 import { useTheme } from "@/lib/themeContext";
 import { ThemeSettingOptions } from "@/lib/types";
@@ -29,8 +30,8 @@ export default function SettingsScreen() {
         }}
       />
       <View style={styles.container}>
-        <Text>Settings Screen</Text>
         <UserButton />
+        <AppText>App Theme</AppText>
         <ButtonGroup
           options={OPTIONS}
           selectedIndex={Math.max(OPTIONS.indexOf(themeSetting), 0)}
@@ -46,5 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    gap: 16,
+    padding: 16,
   },
 });

@@ -12,31 +12,30 @@ export default function ButtonGroup({ options, selectedIndex, onChange }: Button
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, { borderColor: colors.border }]} accessibilityRole="radiogroup">
+    <View
+      style={[styles.container, { borderColor: colors.surface30 }]}
+      accessibilityRole="radiogroup"
+    >
       {options.map((option, index) => {
         const isSelected = index === selectedIndex;
-        const isFirst = index === 0;
-        const isLast = index === options.length - 1;
 
         return (
           <Pressable
             key={option}
             onPress={() => onChange(index)}
             style={[
+              { backgroundColor: colors.surface30 },
+              isSelected && { backgroundColor: colors.surface50 },
               styles.button,
-              { backgroundColor: colors.surface },
-              isSelected && { ...styles.selected, backgroundColor: colors.divider },
-              isFirst && styles.first,
-              isLast && styles.last,
             ]}
             accessibilityRole="radio"
             accessibilityState={{ selected: isSelected }}
           >
             <Text
               style={[
-                styles.text,
                 { color: colors.text },
-                isSelected && { ...styles.selectedText, color: colors.primary },
+                styles.text,
+                isSelected && { ...styles.selectedText },
               ]}
             >{`${option.charAt(0).toUpperCase()}${option.slice(1)}`}</Text>
           </Pressable>
@@ -52,23 +51,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 8,
     padding: 4,
+    gap: 4,
   },
   button: {
     flex: 1,
     alignItems: "center",
     paddingVertical: 8,
     paddingHorizontal: 16,
-  },
-  selected: {
     borderRadius: 6,
-  },
-  first: {
-    borderTopLeftRadius: 6,
-    borderBottomLeftRadius: 6,
-  },
-  last: {
-    borderTopRightRadius: 6,
-    borderBottomRightRadius: 6,
   },
   text: {
     fontSize: 16,

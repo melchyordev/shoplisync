@@ -29,7 +29,7 @@ const RootNavigator = () => {
   const { isLoaded, isSignedIn } = useAuth({
     treatPendingAsSignedOut: false,
   });
-  const { colors } = useTheme();
+  const { colors, theme } = useTheme();
 
   useEffect(() => {
     if (isLoaded) {
@@ -43,9 +43,12 @@ const RootNavigator = () => {
 
   return (
     <>
-      <StatusBar style="auto" animated />
+      <StatusBar style={theme === "dark" ? "light" : "dark"} animated />
       <Stack
-        screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: colors.surface0 },
+        }}
       >
         <Stack.Protected guard={!!isSignedIn}>
           <Stack.Screen name="(main)" />

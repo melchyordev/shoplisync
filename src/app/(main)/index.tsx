@@ -1,6 +1,8 @@
 import { Stack, useRouter } from "expo-router";
 import { SymbolView } from "expo-symbols";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+
+import AppText from "@/components/appText";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -28,7 +30,7 @@ export default function HomeScreen() {
         }}
       />
       <View style={styles.container}>
-        <Text>Home screen</Text>
+        <AppText>Home screen</AppText>
       </View>
     </>
   );
