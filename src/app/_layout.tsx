@@ -47,7 +47,7 @@ const RootNavigator = () => {
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: colors.surface0 },
+          contentStyle: { backgroundColor: colors.background },
         }}
       >
         <Stack.Protected guard={!!isSignedIn}>

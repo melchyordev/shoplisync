@@ -8,9 +8,9 @@ export default function AppText({ variant, style, ...props }: AppTextProps) {
   const { colors } = useTheme();
 
   const textColors = {
-    primary: colors.primary0,
-    accent: colors.accent0,
-    subtext: colors.surface50,
+    primary: colors.primary,
+    accent: colors.accentText,
+    subtext: colors.mutedText,
     default: colors.text,
   };
 

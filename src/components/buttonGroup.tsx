@@ -12,10 +12,7 @@ export default function ButtonGroup({ options, selectedIndex, onChange }: Button
   const { colors } = useTheme();
 
   return (
-    <View
-      style={[styles.container, { borderColor: colors.surface30 }]}
-      accessibilityRole="radiogroup"
-    >
+    <View style={[styles.container, { borderColor: colors.card }]} accessibilityRole="radiogroup">
       {options.map((option, index) => {
         const isSelected = index === selectedIndex;
 
@@ -24,8 +21,8 @@ export default function ButtonGroup({ options, selectedIndex, onChange }: Button
             key={option}
             onPress={() => onChange(index)}
             style={[
-              { backgroundColor: colors.surface30 },
-              isSelected && { backgroundColor: colors.surface50 },
+              { backgroundColor: colors.card },
+              isSelected && { backgroundColor: colors.accent },
               styles.button,
             ]}
             accessibilityRole="radio"

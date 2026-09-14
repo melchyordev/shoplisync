@@ -2,6 +2,7 @@ import { UserButton } from "@clerk/expo/native";
 import { Stack } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
+import AppButton from "@/components/appButton";
 import AppText from "@/components/appText";
 import ButtonGroup from "@/components/buttonGroup";
 import { useTheme } from "@/lib/themeContext";
@@ -32,11 +33,16 @@ export default function SettingsScreen() {
       <View style={styles.container}>
         <UserButton />
         <AppText>App Theme</AppText>
+        <AppText variant="primary">This is a test</AppText>
         <ButtonGroup
           options={OPTIONS}
           selectedIndex={Math.max(OPTIONS.indexOf(themeSetting), 0)}
           onChange={handleThemeSwitch}
         />
+        <AppButton onPress={() => null} title="Primary" />
+        <AppButton onPress={() => null} title="Secondary" variant="secondary" />
+        <AppButton onPress={() => null} title="Outline" variant="outline" />
+        <AppButton onPress={() => null} title="Warning" variant="warning" />
       </View>
     </>
   );
