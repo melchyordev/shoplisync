@@ -17,7 +17,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@clerk/expo": "4.7.1",
+    "@clerk/expo": "4.7.3",
     "@expo/ui": "~57.0.16",
     "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "~57.0.20",
@@ -56,8 +56,8 @@
   "devDependencies": {
     "@types/react": "~19.2.2",
     "husky": "9.1.7",
-    "oxfmt": "0.70.0",
-    "oxlint": "1.85.0",
+    "oxfmt": "0.71.0",
+    "oxlint": "1.86.0",
     "oxlint-config-universe": "0.2.0",
     "typescript": "~6.0.3"
   }
