@@ -2,9 +2,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { Appearance, useColorScheme } from "react-native";
 
+import { colors } from "@/lib/colors";
 import { ThemeOptions, ThemeSettingOptions } from "@/lib/types";
-
-import { colors } from "./colors";
 
 const THEME_STORAGE_KEY = "shoplisync_theme";
 
